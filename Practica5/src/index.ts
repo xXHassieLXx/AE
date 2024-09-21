@@ -1,220 +1,237 @@
-let miVariable : string = "Hello Word";
-console.log(miVariable); 
+let miVariable: string = "Hello World";
+console.log(miVariable);
 
-// Create a Object
 const person1 = {
     firstName1: "John",
     lastName1: "Sanchez",
-    age:22
-}
+    age: 22
+};
 
-// Destructuring 
-let {firstName1, lastName1} = person1; 
+let { firstName1, lastName1 } = person1;
 console.log(firstName1, "", lastName1);
 
 let miNombre = "Hassiel";
-let {ai,a2,a3,a4,a5,a6,a7}:any = miNombre; 
-console.log(ai, a2, a3, a4, a5, a6, a7);
+
+let [a1, a2, a3, a4, a5, a6, a7] = miNombre.split("");
+console.log(a1, a2, a3, a4, a5, a6, a7);
 console.log(a3);
 
-
 const frutas = ["Platano", "Fresa", "Naranjas", "Uvas"];
-let [fruta1, fruta2] = frutas; 
+let [fruta1, fruta2] = frutas;
 console.log(fruta1, fruta2);
 
-let [frutaA, frutaB] = frutas; 
-console.log(frutaA,fruta2);
-
 class Persona {
-    nombre: string;
-    apellidoPaterno: string;
-    apellidoMaterno: string;
-    edad: number;
-    nombreCompleto: string;
-    constructor(nombre:string, apellidoPaterno:string, apellidoMaterno:string, edad:number,nombreCompleto:string){
+    protected nombre: string;
+    protected apellido: string;
+    protected edad: number;
+
+    constructor(nombre: string, apellido: string, edad: number) {
         this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
+        this.apellido = apellido;
         this.edad = edad;
-        this.nombreCompleto = nombre + apellidoPaterno + apellidoMaterno;
     }
-    getEdad():number{
+
+    getNombre(): string {
+        return this.nombre;
+    }
+
+    setNombre(nombre: string): void {
+        this.nombre = nombre;
+    }
+
+    getApellido(): string {
+        return this.apellido;
+    }
+
+    setApellido(apellido: string): void {
+        this.apellido = apellido;
+    }
+
+    getEdad(): number {
         return this.edad;
     }
-    setEdad(edad:number):void{
+
+    setEdad(edad: number): void {
         this.edad = edad;
     }
 
-
-
-    getNombre():string{
-        return this.nombre
-    }
-    setNombre(nombre:string):void{
-        this.nombre = nombre
-    }
-
-
-
-
-    getApellidoPaterno():string{
-        return this.apellidoPaterno
-    }
-    setApellidoPaterno(apellidoPaterno:string):void{
-        this.apellidoPaterno = apellidoPaterno
-    }
-
-
-
-
-    getApellidoMaterno():string{
-        return this.apellidoMaterno
-    }
-    setApellidomaterno(apellidoMaterno:string):void{
-        this.apellidoMaterno = apellidoMaterno
-    }
-
-
-
-
-    getNombreCompleto():string{
-        return this.nombreCompleto
-    }
-    setNombreCompleto(nombreCompleto:string):void{
-        this.nombreCompleto = nombreCompleto
-    }
-
-
-}
-
-let personaje1 = new Persona('Alberto ','Salazar ','Ortiz ',30,'' );
-console.log(personaje1,personaje1.edad);
-console.log(personaje1,personaje1.nombre);
-personaje1.nombre = 'Hola'
-//personaje1.edad = 'Hola';
-personaje1.edad = 25; 
-console.log(personaje1,personaje1.edad);
-
-
-
-let personaje2 = new Persona('Carlos ','Solis ','Ortiz ',19,'');
-personaje2.setEdad(20);
-console.log('Nombre: ' + personaje2.getNombre());
-console.log('Edad: ' + personaje2.getEdad());
-console.log('Nombre Completo: ' + personaje2.getNombreCompleto());
-
-console.log(personaje1.getNombreCompleto())
-
-//Interface 
-
-interface User {
-    name:string;
-    id:number; 
-}
-
-class UserAccount{
-    name:string;
-    id:number;
-
-    constructor(name:string, id:number){
-        this.name = name;
-        this.id = id;
+    mostrarInformacion(): string {
+        return `${this.nombre} ${this.apellido}, Edad: ${this.edad}`;
     }
 }
 
-const usuarioX: User = new UserAccount('Imagine Dragons',1);
-console.log('usuarioX:',usuarioX.name, usuarioX.id)
+class Usuario extends Persona {
+    private username: string;
+    private email: string;
 
+    constructor(nombre: string, apellido: string, edad: number, username: string, email: string) {
+        super(nombre, apellido, edad);
+        this.username = username;
+        this.email = email;
+    }
 
-// Crear almenos 5 clases que van a usar en su proyecto final 
-// Almenos 3 propiedades por clase 
-// y almenos una funcion 
-//Agregar un constructor 3
+    getUsername(): string {
+        return this.username;
+    }
 
+    setUsername(username: string): void {
+        this.username = username;
+    }
 
-// clase productos{
+    getEmail(): string {
+        return this.email;
+    }
 
-// }
-// clase usuario {
+    setEmail(email: string): void {
+        this.email = email;
+    }
 
-// }
-// clase carrito {
+    mostrarPerfil(): string {
+        return `Usuario: ${this.username}, Email: ${this.email}`;
+    }
+}
 
-// }
-// clase MetodoPago{
+// Instancia y uso de clases corregidos
+const usuario1 = new Usuario('Juan', 'Pérez', 28, 'juanp', 'juanp@example.com');
+console.log(usuario1.mostrarPerfil());
+console.log(usuario1.mostrarInformacion());
 
-// }
+// Clase Productos
+class Productos {
+    private nombre: string;
+    private precio: number;
+    private categoria: string;
 
+    constructor(nombre: string, precio: number, categoria: string) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.categoria = categoria;
+    }
 
-//Herencia 
-class Animal {
-    nombre:string;
-    constructor(nombre:string){
+    getNombre(): string {
+        return this.nombre;
+    }
+
+    setNombre(nombre: string): void {
         this.nombre = nombre;
     }
 
-
-    mover(distancia:number = 0){
-        //Tample string
-        console.log(`${this.nombre} se movio ${distancia} mts`)
+    getPrecio(): number {
+        return this.precio;
     }
 
-    hacerSonido(sonido = 'Priii Priii'){
-        console.log(`${this.nombre} hace ${sonido}`);
-    }
-}
-
-let animal1 = new Animal('Grillo');
-animal1.mover(5);
-animal1.hacerSonido('Priii Priii');
-console.log(animal1)
-
-
-
-
-class Perro {
-    nombre:string;
-    constructor(nombre:string){
-        this.nombre = nombre;
+    setPrecio(precio: number): void {
+        this.precio = precio;
     }
 
-
-    mover(distancia:number = 0){
-        //Tample string
-        console.log(`${this.nombre} se movio ${distancia} mts`)
+    getCategoria(): string {
+        return this.categoria;
     }
 
-    hacerSonido(sonido = 'woff woff'){
-        console.log(`${this.nombre} hace ${sonido}`);
+    setCategoria(categoria: string): void {
+        this.categoria = categoria;
+    }
+
+    mostrarInformacion(): string {
+        return `Producto: ${this.nombre}, Precio: $${this.precio}, Categoría: ${this.categoria}`;
     }
 }
 
-const perro1 = new Perro('Firulais');
-perro1.mover(10);
-perro1.hacerSonido('Guau Guau');
-console.log(perro1);
+// Clase Carrito
+class Carrito {
+    private productos: Productos[];
+    private total: number;
+    private cantidad: number;
 
-
-
-
-class Serpiente {
-    nombre:string;
-    constructor(nombre:string){
-        this.nombre = nombre;
+    constructor() {
+        this.productos = [];
+        this.total = 0;
+        this.cantidad = 0;
     }
 
-
-    mover(distancia:number = 0){
-        //Tample string
-        console.log(`${this.nombre} se movio ${distancia} mts`)
+    getProductos(): Productos[] {
+        return this.productos;
     }
 
-    hacerSonido(sonido = 'pssssss'){
-        console.log(`${this.nombre} hace ${sonido}`);
+    setProductos(productos: Productos[]): void {
+        this.productos = productos;
+    }
+
+    getTotal(): number {
+        return this.total;
+    }
+
+    setTotal(total: number): void {
+        this.total = total;
+    }
+
+    getCantidad(): number {
+        return this.cantidad;
+    }
+
+    setCantidad(cantidad: number): void {
+        this.cantidad = cantidad;
+    }
+
+    agregarProducto(producto: Productos): void {
+        this.productos.push(producto);
+        this.total += producto.getPrecio();
+        this.cantidad++;
+    }
+
+    mostrarCarrito(): string {
+        return `Carrito: ${this.cantidad} productos, Total: $${this.total}`;
     }
 }
 
-const serpiente1 = new Serpiente('Cobra');
-serpiente1.mover(2);
-serpiente1.hacerSonido('Psssssss');
-console.log(serpiente1);
+// Clase MetodoDePago
+class MetodoDePago {
+    private tipo: string;
+    private numeroCuenta: string;
+    private titular: string;
+
+    constructor(tipo: string, numeroCuenta: string, titular: string) {
+        this.tipo = tipo;
+        this.numeroCuenta = numeroCuenta;
+        this.titular = titular;
+    }
+
+    getTipo(): string {
+        return this.tipo;
+    }
+
+    setTipo(tipo: string): void {
+        this.tipo = tipo;
+    }
+
+    getNumeroCuenta(): string {
+        return this.numeroCuenta;
+    }
+
+    setNumeroCuenta(numeroCuenta: string): void {
+        this.numeroCuenta = numeroCuenta;
+    }
+
+    getTitular(): string {
+        return this.titular;
+    }
+
+    setTitular(titular: string): void {
+        this.titular = titular;
+    }
+
+    mostrarMetodo(): string {
+        return `Método de Pago: ${this.tipo}, Titular: ${this.titular}`;
+    }
+}
+
+// Ejemplo de uso corregido
+const producto1 = new Productos('Laptop', 1500, 'Electrónica');
+console.log(producto1.mostrarInformacion());
+
+const carrito = new Carrito();
+carrito.agregarProducto(producto1);
+console.log(carrito.mostrarCarrito());
+
+const metodoPago = new MetodoDePago('Tarjeta de Crédito', '1234-5678-9101-1121', 'Juan Pérez');
+console.log(metodoPago.mostrarMetodo());

@@ -1,152 +1,192 @@
-var miVariable = "Hello Word";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var miVariable = "Hello World";
 console.log(miVariable);
-// Create a Object
 var person1 = {
     firstName1: "John",
     lastName1: "Sanchez",
     age: 22
 };
-// Destructuring 
 var firstName1 = person1.firstName1, lastName1 = person1.lastName1;
 console.log(firstName1, "", lastName1);
 var miNombre = "Hassiel";
-var ai = miNombre.ai, a2 = miNombre.a2, a3 = miNombre.a3, a4 = miNombre.a4, a5 = miNombre.a5, a6 = miNombre.a6, a7 = miNombre.a7;
-console.log(ai, a2, a3, a4, a5, a6, a7);
+var _a = miNombre.split(""), a1 = _a[0], a2 = _a[1], a3 = _a[2], a4 = _a[3], a5 = _a[4], a6 = _a[5], a7 = _a[6];
+console.log(a1, a2, a3, a4, a5, a6, a7);
 console.log(a3);
 var frutas = ["Platano", "Fresa", "Naranjas", "Uvas"];
 var fruta1 = frutas[0], fruta2 = frutas[1];
 console.log(fruta1, fruta2);
-var frutaA = frutas[0], frutaB = frutas[1];
-console.log(frutaA, fruta2);
 var Persona = /** @class */ (function () {
-    function Persona(nombre, apellidoPaterno, apellidoMaterno, edad, nombreCompleto) {
+    function Persona(nombre, apellido, edad) {
         this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
+        this.apellido = apellido;
         this.edad = edad;
-        this.nombreCompleto = nombre + apellidoPaterno + apellidoMaterno;
     }
-    Persona.prototype.getEdad = function () {
-        return this.edad;
-    };
-    Persona.prototype.setEdad = function (edad) {
-        this.edad = edad;
-    };
     Persona.prototype.getNombre = function () {
         return this.nombre;
     };
     Persona.prototype.setNombre = function (nombre) {
         this.nombre = nombre;
     };
-    Persona.prototype.getApellidoPaterno = function () {
-        return this.apellidoPaterno;
+    Persona.prototype.getApellido = function () {
+        return this.apellido;
     };
-    Persona.prototype.setApellidoPaterno = function (apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
+    Persona.prototype.setApellido = function (apellido) {
+        this.apellido = apellido;
     };
-    Persona.prototype.getApellidoMaterno = function () {
-        return this.apellidoMaterno;
+    Persona.prototype.getEdad = function () {
+        return this.edad;
     };
-    Persona.prototype.setApellidomaterno = function (apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
+    Persona.prototype.setEdad = function (edad) {
+        this.edad = edad;
     };
-    Persona.prototype.getNombreCompleto = function () {
-        return this.nombreCompleto;
-    };
-    Persona.prototype.setNombreCompleto = function (nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
+    Persona.prototype.mostrarInformacion = function () {
+        return "".concat(this.nombre, " ").concat(this.apellido, ", Edad: ").concat(this.edad);
     };
     return Persona;
 }());
-var personaje1 = new Persona('Alberto ', 'Salazar ', 'Ortiz ', 30, '');
-console.log(personaje1, personaje1.edad);
-console.log(personaje1, personaje1.nombre);
-personaje1.nombre = 'Hola';
-//personaje1.edad = 'Hola';
-personaje1.edad = 25;
-console.log(personaje1, personaje1.edad);
-var personaje2 = new Persona('Carlos ', 'Solis ', 'Ortiz ', 19, '');
-personaje2.setEdad(20);
-console.log('Nombre: ' + personaje2.getNombre());
-console.log('Edad: ' + personaje2.getEdad());
-console.log('Nombre Completo: ' + personaje2.getNombreCompleto());
-console.log(personaje1.getNombreCompleto());
-var UserAccount = /** @class */ (function () {
-    function UserAccount(name, id) {
-        this.name = name;
-        this.id = id;
+var Usuario = /** @class */ (function (_super) {
+    __extends(Usuario, _super);
+    function Usuario(nombre, apellido, edad, username, email) {
+        var _this = _super.call(this, nombre, apellido, edad) || this;
+        _this.username = username;
+        _this.email = email;
+        return _this;
     }
-    return UserAccount;
-}());
-var usuarioX = new UserAccount('Imagine Dragons', 1);
-console.log('usuarioX:', usuarioX.name, usuarioX.id);
-// Crear almenos 5 clases que van a usar en su proyecto final 
-// Almenos 3 propiedades por clase 
-// y almenos una funcion 
-//Agregar un constructor 3
-// clase productos{
-// }
-// clase usuario {
-// }
-// clase carrito {
-// }
-// clase MetodoPago{
-// }
-//Herencia 
-var Animal = /** @class */ (function () {
-    function Animal(nombre) {
+    Usuario.prototype.getUsername = function () {
+        return this.username;
+    };
+    Usuario.prototype.setUsername = function (username) {
+        this.username = username;
+    };
+    Usuario.prototype.getEmail = function () {
+        return this.email;
+    };
+    Usuario.prototype.setEmail = function (email) {
+        this.email = email;
+    };
+    Usuario.prototype.mostrarPerfil = function () {
+        return "Usuario: ".concat(this.username, ", Email: ").concat(this.email);
+    };
+    return Usuario;
+}(Persona));
+// Instancia y uso de clases corregidos
+var usuario1 = new Usuario('Juan', 'Pérez', 28, 'juanp', 'juanp@example.com');
+console.log(usuario1.mostrarPerfil());
+console.log(usuario1.mostrarInformacion());
+// Clase Productos
+var Productos = /** @class */ (function () {
+    function Productos(nombre, precio, categoria) {
         this.nombre = nombre;
+        this.precio = precio;
+        this.categoria = categoria;
     }
-    Animal.prototype.mover = function (distancia) {
-        if (distancia === void 0) { distancia = 0; }
-        //Tample string
-        console.log("".concat(this.nombre, " se movio ").concat(distancia, " mts"));
+    Productos.prototype.getNombre = function () {
+        return this.nombre;
     };
-    Animal.prototype.hacerSonido = function (sonido) {
-        if (sonido === void 0) { sonido = 'Priii Priii'; }
-        console.log("".concat(this.nombre, " hace ").concat(sonido));
-    };
-    return Animal;
-}());
-var animal1 = new Animal('Grillo');
-animal1.mover(5);
-animal1.hacerSonido('Priii Priii');
-console.log(animal1);
-var Perro = /** @class */ (function () {
-    function Perro(nombre) {
+    Productos.prototype.setNombre = function (nombre) {
         this.nombre = nombre;
-    }
-    Perro.prototype.mover = function (distancia) {
-        if (distancia === void 0) { distancia = 0; }
-        //Tample string
-        console.log("".concat(this.nombre, " se movio ").concat(distancia, " mts"));
     };
-    Perro.prototype.hacerSonido = function (sonido) {
-        if (sonido === void 0) { sonido = 'woff woff'; }
-        console.log("".concat(this.nombre, " hace ").concat(sonido));
+    Productos.prototype.getPrecio = function () {
+        return this.precio;
     };
-    return Perro;
+    Productos.prototype.setPrecio = function (precio) {
+        this.precio = precio;
+    };
+    Productos.prototype.getCategoria = function () {
+        return this.categoria;
+    };
+    Productos.prototype.setCategoria = function (categoria) {
+        this.categoria = categoria;
+    };
+    Productos.prototype.mostrarInformacion = function () {
+        return "Producto: ".concat(this.nombre, ", Precio: $").concat(this.precio, ", Categor\u00EDa: ").concat(this.categoria);
+    };
+    return Productos;
 }());
-var perro1 = new Perro('Firulais');
-perro1.mover(10);
-perro1.hacerSonido('Guau Guau');
-console.log(perro1);
-var Serpiente = /** @class */ (function () {
-    function Serpiente(nombre) {
-        this.nombre = nombre;
+// Clase Carrito
+var Carrito = /** @class */ (function () {
+    function Carrito() {
+        this.productos = [];
+        this.total = 0;
+        this.cantidad = 0;
     }
-    Serpiente.prototype.mover = function (distancia) {
-        if (distancia === void 0) { distancia = 0; }
-        //Tample string
-        console.log("".concat(this.nombre, " se movio ").concat(distancia, " mts"));
+    Carrito.prototype.getProductos = function () {
+        return this.productos;
     };
-    Serpiente.prototype.hacerSonido = function (sonido) {
-        if (sonido === void 0) { sonido = 'pssssss'; }
-        console.log("".concat(this.nombre, " hace ").concat(sonido));
+    Carrito.prototype.setProductos = function (productos) {
+        this.productos = productos;
     };
-    return Serpiente;
+    Carrito.prototype.getTotal = function () {
+        return this.total;
+    };
+    Carrito.prototype.setTotal = function (total) {
+        this.total = total;
+    };
+    Carrito.prototype.getCantidad = function () {
+        return this.cantidad;
+    };
+    Carrito.prototype.setCantidad = function (cantidad) {
+        this.cantidad = cantidad;
+    };
+    Carrito.prototype.agregarProducto = function (producto) {
+        this.productos.push(producto);
+        this.total += producto.getPrecio();
+        this.cantidad++;
+    };
+    Carrito.prototype.mostrarCarrito = function () {
+        return "Carrito: ".concat(this.cantidad, " productos, Total: $").concat(this.total);
+    };
+    return Carrito;
 }());
-var serpiente1 = new Serpiente('Cobra');
-serpiente1.mover(2);
-serpiente1.hacerSonido('Psssssss');
-console.log(serpiente1);
+// Clase MetodoDePago
+var MetodoDePago = /** @class */ (function () {
+    function MetodoDePago(tipo, numeroCuenta, titular) {
+        this.tipo = tipo;
+        this.numeroCuenta = numeroCuenta;
+        this.titular = titular;
+    }
+    MetodoDePago.prototype.getTipo = function () {
+        return this.tipo;
+    };
+    MetodoDePago.prototype.setTipo = function (tipo) {
+        this.tipo = tipo;
+    };
+    MetodoDePago.prototype.getNumeroCuenta = function () {
+        return this.numeroCuenta;
+    };
+    MetodoDePago.prototype.setNumeroCuenta = function (numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
+    };
+    MetodoDePago.prototype.getTitular = function () {
+        return this.titular;
+    };
+    MetodoDePago.prototype.setTitular = function (titular) {
+        this.titular = titular;
+    };
+    MetodoDePago.prototype.mostrarMetodo = function () {
+        return "M\u00E9todo de Pago: ".concat(this.tipo, ", Titular: ").concat(this.titular);
+    };
+    return MetodoDePago;
+}());
+// Ejemplo de uso corregido
+var producto1 = new Productos('Laptop', 1500, 'Electrónica');
+console.log(producto1.mostrarInformacion());
+var carrito = new Carrito();
+carrito.agregarProducto(producto1);
+console.log(carrito.mostrarCarrito());
+var metodoPago = new MetodoDePago('Tarjeta de Crédito', '1234-5678-9101-1121', 'Juan Pérez');
+console.log(metodoPago.mostrarMetodo());

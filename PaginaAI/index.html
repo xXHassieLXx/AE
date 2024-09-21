@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Muebles</title>
+    <style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #20232a;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+nav {
+    background-color: #007bff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.hero {
+    background-image: url('https://www.ahoramadrid.com/wp-content/uploads/sofas-sillones-tienda-muebles-madrid.jpg'); 
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero h2, .hero p {
+    position: relative;
+    z-index: 2;
+}
+
+/* Carrusel */
+.carousel-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.carousel-container {
+    padding: 20px 0;
+    position: relative;
+    width: 80%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 33.33%; /* Muestra 3 imágenes */
+    box-sizing: border-box;
+}
+
+.carousel img {
+    width: calc(100% - 20px); /* Ajusta el tamaño de la imagen para considerar el padding */
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    border: 10px solid #f4f4f4;
+    width: calc(100% - 20px); /* Ajusta el tamaño de la imagen para considerar el padding */
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-controls button {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-controls button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Servicios */
+.services {
+    background-color: #20232a;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.services h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.service-item {
+    margin: 20px 0;
+}
+
+.service-item h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #61dafb;
+}
+
+.service-item p {
+    font-size: 1em;
+    color: #ccc;
+}
+
+/* Testimonios */
+.testimonials {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.testimonials h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.testimonial-item {
+    margin: 20px auto;
+    max-width: 600px;
+    font-style: italic;
+}
+
+.testimonial-item strong {
+    display: block;
+    margin-top: 10px;
+}
+
+/* Contacto */
+.contact {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.contact h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact input, .contact textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact button {
+    padding: 10px 20px;
+    background-color: #61dafb;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact button:hover {
+    background-color: #21a1f1;
+}
+
+/* Pie de página */
+footer {
+    background-color: #20232a;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer a {
+    color: #61dafb;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* Lo más vendido */
+.best-sellers {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.best-sellers h2 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    width: 30%;
+}
+
+.product img {
+    width: 80%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.product h3 {
+    margin: 10px 0;
+}
+
+.price {
+    font-size: 1.2em;
+    color: #28a745;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Tienda de Muebles Exclusivos</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Productos</a></li>
+            <li><a href="#">Contacto</a></li>
+            <li><a href="#">Sobre Nosotros</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h2>Encuentra el Mueble Perfecto</h2>
+        <p>Muebles elegantes y sofisticados para transformar tu hogar.</p>
+    </section>
+
+    <section class="best-sellers">
+        <h2>Lo Más Vendido</h2>
+        <div class="product">
+            <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Sofá Moderno">
+            <h3>Sofá Moderno</h3>
+            <p>Un sofá cómodo y moderno para tu sala de estar.</p>
+            <div class="price">$599</div>
+            <button>Comprar</button>
+        </div>
+    
+        <div class="product">
+            <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Estantería de Madera">
+            <h3>Estantería de Madera</h3>
+            <p>Estantería elegante para organizar tus libros y decoraciones.</p>
+            <div class="price">$299</div>
+            <button>Comprar</button>
+        </div>
+    
+        <div class="product">
+            <img src="https://i.pinimg.com/564x/5f/ed/b0/5fedb0922ec698988d8acdd46bf728e6.jpg" alt="Mesa de Centro">
+            <h3>Mesa de Centro</h3>
+            <p>Mesa de centro de diseño minimalista para tu sala de estar.</p>
+            <div class="price">$199</div>
+            <button>Comprar</button>
+        </div>
+
+        <h2>Conoce Nuestros Nuevos Productos</h2>
+        <div class="product">
+            <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Sofá Moderno">
+            <h3>Sofá Moderno</h3>
+            <p>Un sofá cómodo y moderno para tu sala de estar.</p>
+            <div class="price">$599</div>
+            <button>Comprar</button>
+        </div>
+    
+        <div class="product">
+            <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Estantería de Madera">
+            <h3>Estantería de Madera</h3>
+            <p>Estantería elegante para organizar tus libros y decoraciones.</p>
+            <div class="price">$299</div>
+            <button>Comprar</button>
+        </div>
+    
+        <div class="product">
+            <img src="https://i.pinimg.com/564x/5f/ed/b0/5fedb0922ec698988d8acdd46bf728e6.jpg" alt="Mesa de Centro">
+            <h3>Mesa de Centro</h3>
+            <p>Mesa de centro de diseño minimalista para tu sala de estar.</p>
+            <div class="price">$199</div>
+            <button>Comprar</button>
+        </div>
+
+    </section>
+    
+
+<!-- Carrusel de Muebles -->
+<section class="carousel-section">
+    <h3>Muebles</h3>
+    <p>Explora nuestra colección exclusiva de muebles modernos y elegantes.</p>
+    <div class="carousel-container">
+        <div class="carousel" id="carouselMuebles">
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Mueble 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Mueble 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Mueble 3">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Mueble 4">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Mueble 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Mueble 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Mueble 3">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Mueble 4">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Mueble 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Mueble 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Mueble 3">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/736x/a0/71/2c/a0712cc81361d8d17a50f82a20616c60.jpg" alt="Mueble 4">
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button onclick="prevSlide('carouselMuebles')">❮</button>
+            <button onclick="nextSlide('carouselMuebles')">❯</button>
+        </div>
+    </div>
+</section>
+
+<!-- Carrusel de Comedores -->
+<section class="carousel-section">
+    <h3>Comedores</h3>
+    <p>Disfruta de cenas memorables con nuestros elegantes comedores.</p>
+    <div class="carousel-container">
+        <div class="carousel" id="carouselComedores">
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Comedor 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Comedor 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Comedor 3">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Comedor 4">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Comedor 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Comedor 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Comedor 3">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Comedor 4">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Comedor 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Comedor 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Comedor 3">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/01/d6/1c/01d61cc1e8b4d0a1c7f0be14ac7d272c.jpg" alt="Comedor 4">
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button onclick="prevSlide('carouselComedores')">❮</button>
+            <button onclick="nextSlide('carouselComedores')">❯</button>
+        </div>
+    </div>
+</section>
+
+<!-- Carrusel de Salas -->
+<section class="carousel-section">
+    <h3>Salas</h3>
+    <p>Crea un espacio acogedor y elegante con nuestras salas de estar.</p>
+    <div class="carousel-container">
+        <div class="carousel" id="carouselSalas">
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/5f/ed/b0/5fedb0922ec698988d8acdd46bf728e6.jpg" alt="Sala 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/5f/ed/b0/5fedb0922ec698988d8acdd46bf728e6.jpg" alt="Sala 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/5f/ed/b0/5fedb0922ec698988d8acdd46bf728e6.jpg" alt="Sala 3">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/5f/ed/b0/5fedb0922ec698988d8acdd46bf728e6.jpg" alt="Sala 4">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/5f/ed/b0/5fedb0922ec698988d8acdd46bf728e6.jpg" alt="Sala 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/5f/ed/b0/5fedb0922ec698988d8acdd46bf728e6.jpg" alt="Sala 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/5f/ed/b0/5fedb0922ec698988d8acdd46bf728e6.jpg" alt="Sala 3">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.pinimg.com/564x/5f/ed/b0/5fedb0922ec698988d8acdd46bf728e6.jpg" alt="Sala 4">
+            </div>
+            
+        </div>
+        <div class="carousel-controls">
+            <button onclick="prevSlide('carouselSalas')">❮</button>
+            <button onclick="nextSlide('carouselSalas')">❯</button>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Sección de Servicios -->
+    <section class="services">
+        <h3>Servicios</h3>
+        <div class="service-item">
+            <h4>Diseño Personalizado</h4>
+            <p>Ofrecemos servicios de diseño personalizado para que cada mueble se ajuste a tu estilo.</p>
+        </div>
+        <div class="service-item">
+            <h4>Asesoría Profesional</h4>
+            <p>Nuestros expertos están disponibles para ayudarte a seleccionar los muebles perfectos.</p>
+        </div>
+        <div class="service-item">
+            <h4>Envío Rápido</h4>
+            <p>Garantizamos un envío rápido y seguro para que disfrutes de tus muebles lo antes posible.</p>
+        </div>
+    </section>
+
+    <!-- Sección de Testimonios -->
+    <section class="testimonials">
+        <h3>Testimonios</h3>
+        <div class="testimonial-item">
+            <p>"Excelente servicio y calidad de los muebles. Estoy muy feliz con mi compra!"</p>
+            <strong>- Ana G.</strong>
+        </div>
+        <div class="testimonial-item">
+            <p>"Los muebles son aún más bonitos en persona. ¡Los recomiendo!"</p>
+            <strong>- Juan P.</strong>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section class="contact">
+        <h3>Contacto</h3>
+        <p>¿Tienes preguntas? ¡Contáctanos!</p>
+        <form>
+            <input type="text" placeholder="Tu nombre" required>
+            <input type="email" placeholder="Tu correo electrónico" required>
+            <textarea rows="4" placeholder="Tu mensaje" required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Tienda de Muebles. Todos los derechos reservados.</p>
+        <p><a href="#">Política de Privacidad</a> | <a href="#">Términos de Servicio</a></p>
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+
+function showSlides(carouselId, index) {
+    const slides = document.querySelectorAll(`#${carouselId} .carousel-item`);
+    const totalSlides = slides.length;
+    slideIndex = index >= totalSlides ? 0 : index < 0 ? totalSlides - 1 : index;
+    const offset = -Math.floor(slideIndex / 3) * 100; // Ajusta el desplazamiento para mostrar 3 imágenes
+    document.getElementById(carouselId).style.transform = `translateX(${offset}%)`;
+}
+
+function nextSlide(carouselId) {
+    showSlides(carouselId, slideIndex + 1);
+}
+
+function prevSlide(carouselId) {
+    showSlides(carouselId, slideIndex - 1);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    showSlides('carouselMuebles', slideIndex);
+    showSlides('carouselComedores', slideIndex);
+    showSlides('carouselSalas', slideIndex);
+});
+
+    </script>
+</body>
+
+</html>
+
