@@ -1,31 +1,30 @@
-"use strict";
 function sum(a, b) {
     return a + b;
 }
-let resultado = sum(2, 3);
+var resultado = sum(2, 3);
 console.log(resultado);
-const fSum = sum(5, 80);
+var fSum = sum(5, 80);
 console.log(fSum);
 // Funciones de orden superior
 // Funciones arrow
-const sumArrow = (a, b) => {
+var sumArrow = function (a, b) {
     return a + b;
 };
 // Funcion anonima
-let functionAnonima = function () {
+var functionAnonima = function () {
     console.log("Hola mundo");
 };
 functionAnonima();
 // Funcion arrow
-let functionAnonimaArrow = () => {
+var functionAnonimaArrow = function () {
     console.log("Hola mundo");
 };
 functionAnonimaArrow();
 function saludo(nombre) {
-    return `Hola ${nombre}`;
+    return "Hola ".concat(nombre);
 }
 console.log(saludo("Juan"));
-const saludoArrow = (nombre) => "Hola" + nombre;
+var saludoArrow = function (nombre) { return "Hola" + nombre; };
 saludoArrow("Carlos");
 function advertencia() {
     console.log("Cuidado");
