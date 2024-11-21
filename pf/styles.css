@@ -11,6 +11,10 @@ body {
     color: white;
 }
 
+
+
+
+
 /* Estilos del header */
 .header {
     background-color: #111;
@@ -31,7 +35,7 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: white;
+    color: yellow;
     font-weight: bold;
 }
 
@@ -243,7 +247,7 @@ body {
 }
 
 .carousel-item button:hover {
-    background-color: rgb(255, 49, 49);
+    background-color: rgb(245, 65, 65);
 }
 
 
