@@ -263,7 +263,8 @@ body {
 }
 
 .news-section h2 {
-    font-size: 36px;
+    font-size: 50px;
+    font-family: "Jersey 15", sans-serif;
     margin-bottom: 20px;
     color: yellow;
 }
